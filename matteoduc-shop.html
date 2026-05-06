@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mattéo Duc — Mes Partenaires</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111111;
+    --card: #181818;
+    --border: #2a2a2a;
+    --gold: #c8a84b;
+    --gold-light: #e8c96d;
+    --white: #f5f5f0;
+    --muted: #888;
+    --accent: #c8a84b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    background: var(--dark);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 1.5rem 2.5rem;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%; transform: translateX(-50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(200,168,75,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .avatar-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .avatar {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    object-fit: cover;
+    display: block;
+  }
+
+  .avatar-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,168,75,0.3);
+  }
+
+  .badge-sport {
+    display: inline-block;
+    background: var(--gold);
+    color: #1a1400;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── SECTION TITRE ── */
+  .section-header {
+    padding: 2rem 1.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-header h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  .section-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── GRILLE PRODUITS ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 1rem 2rem;
+  }
+
+  .product-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.18s ease, border-color 0.18s ease;
+    position: relative;
+  }
+
+  .product-card:active {
+    transform: scale(0.97);
+  }
+
+  .product-card:hover {
+    border-color: rgba(200,168,75,0.4);
+  }
+
+  .card-img-wrap {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #1e1e1e;
+    overflow: hidden;
+  }
+
+  .card-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover .card-img-wrap img {
+    transform: scale(1.04);
+  }
+
+  .promo-pill {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: var(--gold);
+    color: #1a1400;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 20px;
+  }
+
+  .card-body {
+    padding: 0.75rem;
+  }
+
+  .card-brand {
+    font-size: 10px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
+
+  .card-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .card-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .card-price .original {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-decoration: line-through;
+    margin-left: 4px;
+    font-weight: 400;
+  }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 100;
+    align-items: flex-end;
+  }
+
+  .modal-overlay.open {
+    display: flex;
+  }
+
+  .modal {
+    background: var(--dark);
+    border-radius: 20px 20px 0 0;
+    border-top: 1px solid var(--border);
+    width: 100%;
+    max-height: 92vh;
+    overflow-y: auto;
+    animation: slideUp 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .modal-handle {
+    width: 40px; height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin: 12px auto 0;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 32px; height: 32px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1;
+  }
+
+  .modal-imgs {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #1a1a1a;
+    overflow: hidden;
+    margin-top: 12px;
+  }
+
+  .modal-imgs img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  .modal-body {
+    padding: 1.25rem 1.25rem 2rem;
+    position: relative;
+  }
+
+  .modal-brand {
+    font-size: 11px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .modal-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 0.75rem;
+  }
+
+  .modal-price-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .modal-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .modal-original {
+    font-size: 1rem;
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+
+  .modal-desc {
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+
+  /* Code promo bloc */
+  .promo-block {
+    background: rgba(200,168,75,0.08);
+    border: 1px solid rgba(200,168,75,0.3);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .promo-block .label {
+    font-size: 11px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .promo-code {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--gold-light);
+    letter-spacing: 0.05em;
+  }
+
+  .copy-btn {
+    background: rgba(200,168,75,0.15);
+    border: 1px solid rgba(200,168,75,0.4);
+    border-radius: 8px;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+
+  .copy-btn:active { background: rgba(200,168,75,0.3); }
+
+  /* Bouton acheter */
+  .buy-btn {
+    display: block;
+    width: 100%;
+    background: var(--gold);
+    color: #0a0800;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .buy-btn:hover { background: var(--gold-light); }
+
+  .modal-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 0.75rem;
+  }
+
+  /* Tags */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    background: #222;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 11px;
+    color: #999;
+    padding: 3px 10px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 0.05em;
+  }
+
+  footer span { color: var(--gold); }
+
+  /* Scroll lock */
+  body.locked { overflow: hidden; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="avatar-wrap">
+    <img class="avatar"
+      src="https://graph.facebook.com/Duc.Matteo/picture?type=large&redirect=true"
+      onerror="this.src='https://ui-avatars.com/api/?name=M+D&background=c8a84b&color=0a0800&size=96'"
+      alt="Mattéo Duc">
+    <div class="avatar-ring"></div>
+  </div>
+  <div>
+    <div class="badge-sport">🚶 Marche Athlétique</div>
+    <h1>Mattéo Duc</h1>
+    <p class="subtitle">Mes produits · Mes partenaires · Mes codes</p>
+  </div>
+</header>
+
+<!-- SECTION PRODUITS -->
+<div class="section-header">
+  <h2>Mes partenaires</h2>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal(null, true)">✕</button>
+    <div id="modal-img-wrap" class="modal-imgs"></div>
+    <div class="modal-body">
+      <div class="modal-brand" id="m-brand"></div>
+      <div class="modal-title" id="m-title"></div>
+      <div class="modal-price-row">
+        <div class="modal-price" id="m-price"></div>
+        <div class="modal-original" id="m-original"></div>
+      </div>
+      <div class="tags" id="m-tags"></div>
+      <div class="modal-desc" id="m-desc"></div>
+      <div class="promo-block" id="m-promo-block" style="display:none">
+        <div>
+          <div class="label">Code promo exclusif</div>
+          <div class="promo-code" id="m-code"></div>
+        </div>
+        <button class="copy-btn" onclick="copyCode()">Copier</button>
+      </div>
+      <a class="buy-btn" id="m-link" target="_blank" rel="noopener">Acheter ↗</a>
+      <div class="modal-note" id="m-note"></div>
+    </div>
+  </div>
+</div>
+
+<footer>Sélectionné par <span>Mattéo Duc</span> · Athlète de haut niveau</footer>
+
+<script>
+const products = [
+  {
+    brand: "Authentic Nutrition",
+    name: "Booster + Boisson Énergétique",
+    short: "Booster+ Isotonique",
+    price: "3,99€",
+    priceNum: 3.99,
+    originalPrice: null,
+    img: "https://authentic-nutrition.com/cdn/shop/files/citron-500webp.webp?v=1776156130",
+    imgs: [
+      "https://authentic-nutrition.com/cdn/shop/files/citron-500webp.webp?v=1776156130",
+      "https://authentic-nutrition.com/cdn/shop/files/peche-500webp.webp?v=1776156130"
+    ],
+    desc: "La boisson que j'utilise à l'entraînement et en compétition. Isotonique, fabriquée en France, elle apporte les glucides et électrolytes nécessaires pour maintenir l'effort sur la durée. Disponible en plusieurs saveurs.",
+    code: "MATTEO20",
+    discount: "-20%",
+    tags: ["Nutrition", "Énergie", "Hydratation", "Made in France"],
+    link: "https://authentic-nutrition.com/products/boisson-energetique-booster",
+    note: "Code -20% sur toute la boutique"
+  },
+  {
+    brand: "Herkover",
+    name: "PressoPro 8.0+",
+    short: "Pressothérapie Pro",
+    price: "749,90€",
+    priceNum: 749.90,
+    originalPrice: null,
+    img: "https://herkover.fr/cdn/shop/files/12.svg?crop=center&height=1200&v=1770280233&width=1200",
+    imgs: [
+      "https://herkover.fr/cdn/shop/files/12.svg?crop=center&height=1200&v=1770280233&width=1200"
+    ],
+    desc: "Mon appareil de récupération indispensable. La pressothérapie accélère la récupération musculaire, réduit les jambes lourdes et favorise la circulation. Idéal après les longues séances ou en phase de compétition intensive.",
+    code: null,
+    discount: null,
+    tags: ["Récupération", "Pressothérapie", "Circulation", "Jambes"],
+    link: "https://herkover.fr/collections/pressotherapie/products/pressopro-8-0",
+    note: "Livraison gratuite dès 150€"
+  },
+  {
+    brand: "ASICS × i-Run",
+    name: "Metaspeed Edge Tokyo",
+    short: "Chaussure de compétition",
+    price: "270€",
+    priceNum: 270,
+    originalPrice: null,
+    img: "https://photo.i-run.com/asics-metaspeed-edge-tokyo-chaussures-homme-839938-1-sz.jpg",
+    imgs: [
+      "https://photo.i-run.com/asics-metaspeed-edge-tokyo-chaussures-homme-839938-1-sz.jpg"
+    ],
+    desc: "La chaussure que je chausse en compétition. Conçue pour les athlètes à cadence élevée, la Metaspeed Edge Tokyo offre un retour d'énergie exceptionnel et un amorti carbone pour atteindre les chronos les plus serrés.",
+    code: null,
+    discount: null,
+    tags: ["Compétition", "Carbon", "ASICS", "Route"],
+    link: "https://www.i-run.fr/chaussures_homme/Running_c23/Asics_m1/Asics-Metaspeed-Edge-Tokyo_Asics_fiche_144930.html?v=03",
+    note: "Note 4.9/5 · 23 avis · 3x sans frais dès 90€"
+  }
+];
+
+let currentCode = '';
+
+function render() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = products.map((p, i) => `
+    <div class="product-card" onclick="openModal(${i})">
+      ${p.discount ? `<div class="promo-pill">${p.discount}</div>` : ''}
+      <div class="card-img-wrap">
+        <img src="${p.img}" alt="${p.name}" loading="lazy"
+          onerror="this.style.display='none'">
+      </div>
+      <div class="card-body">
+        <div class="card-brand">${p.brand}</div>
+        <div class="card-name">${p.short}</div>
+        <div class="card-price">${p.price}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openModal(i) {
+  const p = products[i];
+  document.body.classList.add('locked');
+
+  document.getElementById('m-brand').textContent = p.brand;
+  document.getElementById('m-title').textContent = p.name;
+  document.getElementById('m-price').textContent = p.price;
+  document.getElementById('m-original').textContent = p.originalPrice || '';
+  document.getElementById('m-desc').textContent = p.desc;
+  document.getElementById('m-link').href = p.link;
+  document.getElementById('m-note').textContent = p.note || '';
+
+  const tagsEl = document.getElementById('m-tags');
+  tagsEl.innerHTML = (p.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
+
+  const imgWrap = document.getElementById('modal-img-wrap');
+  imgWrap.innerHTML = `<img src="${p.imgs[0]}" alt="${p.name}"
+    onerror="this.parentElement.style.display='none'">`;
+
+  const promoBlock = document.getElementById('m-promo-block');
+  if (p.code) {
+    promoBlock.style.display = 'flex';
+    document.getElementById('m-code').textContent = p.code;
+    currentCode = p.code;
+  } else {
+    promoBlock.style.display = 'none';
+    currentCode = '';
+  }
+
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal(e, force) {
+  if (force || (e && e.target === document.getElementById('modal-overlay'))) {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.classList.remove('locked');
+  }
+}
+
+function copyCode() {
+  if (!currentCode) return;
+  navigator.clipboard.writeText(currentCode).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ Copié !';
+    setTimeout(() => btn.textContent = 'Copier', 1800);
+  }).catch(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = currentCode;
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal(null, true);
+});
+
+render();
+</script>
+</body>
+</html>
