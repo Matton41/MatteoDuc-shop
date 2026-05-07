@@ -6,103 +6,123 @@
 <title>Mattéo Duc — Mes Partenaires</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy:   #1a3a5c;
-    --navy-d: #0f2540;
-    --navy-l: #2a5080;
-    --red:    #c0392b;
-    --red-h:  #e74c3c;
-    --white:  #ffffff;
-    --off:    #f7f8fa;
-    --light:  #eef1f5;
-    --border: #dde2ea;
-    --muted:  #7a8a9a;
-    --text:   #1c2b3a;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--off);color:var(--text);font-family:'Open Sans',sans-serif;font-weight:400;min-height:100vh}
+:root {
+  --navy:   #1a3a5c;
+  --navy-d: #0f2540;
+  --navy-l: #2a5080;
+  --accent: #4a5568;
+  --accent-h:#606b7d;
+  --slate:  #64748b;
+  --white:  #ffffff;
+  --off:    #f7f8fa;
+  --light:  #eef1f5;
+  --border: #dde2ea;
+  --muted:  #7a8a9a;
+  --text:   #1c2b3a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--off);color:var(--text);font-family:'Open Sans',sans-serif;font-weight:400;min-height:100vh}
 
-  /* HEADER */
-  header{background:var(--navy-d);padding:0 0 1.4rem;text-align:center;position:relative}
-  .header-stripe{background:var(--red);height:4px;width:100%}
-  .avatar-wrap{display:inline-block;margin:1.4rem 0 0.7rem;position:relative}
-  .avatar{width:86px;height:86px;border-radius:50%;border:3px solid #fff;object-fit:cover;display:block}
-  .avatar-badge{position:absolute;bottom:-2px;right:-6px;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:2px 7px;border-radius:20px;white-space:nowrap}
-  h1{font-family:'Montserrat',sans-serif;font-size:1.65rem;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.01em;margin-bottom:.15rem}
-  .header-sub{font-size:.78rem;color:rgba(255,255,255,.5);letter-spacing:.05em;margin-bottom:1rem}
+/* ── HEADER ── */
+header{background:var(--navy-d);padding:0 0 1.4rem;text-align:center;position:relative}
+.header-stripe{background:var(--slate);height:4px}
+.avatar-wrap{display:inline-block;margin:1.4rem 0 .6rem;position:relative}
+.avatar{width:86px;height:86px;border-radius:50%;border:3px solid #fff;object-fit:cover;display:block}
+.avatar-badge{position:absolute;bottom:-2px;right:-6px;background:var(--slate);color:#fff;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:2px 7px;border-radius:20px;white-space:nowrap}
 
-  /* SOCIALS */
-  .socials{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;padding:0 1rem}
-  .social-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:rgba(255,255,255,.85);text-decoration:none;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;padding:6px 11px;transition:background .15s}
-  .social-btn:hover{background:rgba(255,255,255,.18)}
-  .social-btn svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
+/* nom + badge certifié */
+.name-row{display:flex;align-items:center;justify-content:center;gap:7px;margin-bottom:.15rem}
+h1{font-family:'Montserrat',sans-serif;font-size:1.65rem;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.01em}
+.verified{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#3b82f6;border-radius:50%;flex-shrink:0}
+.verified svg{width:13px;height:13px;fill:#fff}
 
-  /* SECTION TITLE */
-  .section-header{padding:1.4rem 1.2rem .7rem;display:flex;align-items:center;gap:10px}
-  .section-header h2{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);white-space:nowrap}
-  .section-header::after{content:'';flex:1;height:1px;background:var(--border)}
+.header-sub{font-size:.78rem;color:rgba(255,255,255,.5);letter-spacing:.05em;margin-bottom:1rem}
 
-  /* GRID */
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 1rem 2rem}
-  .product-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .16s,box-shadow .16s;position:relative}
-  .product-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,58,92,.1)}
-  .product-card:active{transform:scale(.97)}
-  .card-img-wrap{width:100%;aspect-ratio:1;background:var(--light);overflow:hidden}
-  .card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-  .product-card:hover .card-img-wrap img{transform:scale(1.05)}
-  .promo-pill{position:absolute;top:8px;left:8px;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:20px}
-  .card-body{padding:.7rem .75rem .85rem}
-  .card-brand{font-size:10px;color:var(--navy);text-transform:uppercase;letter-spacing:.12em;font-weight:600;margin-bottom:3px}
-  .card-name{font-family:'Montserrat',sans-serif;font-size:.84rem;font-weight:700;line-height:1.25;color:var(--text);margin-bottom:6px}
-  .card-price{font-family:'Montserrat',sans-serif;font-size:.98rem;font-weight:800;color:var(--navy)}
+/* SOCIALS */
+.socials{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;padding:0 1rem}
+.social-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:rgba(255,255,255,.85);text-decoration:none;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;padding:6px 11px;transition:background .15s}
+.social-btn:hover{background:rgba(255,255,255,.18)}
+.social-btn svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
 
-  /* MODAL */
-  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,20,35,.72);z-index:100;align-items:flex-end}
-  .modal-overlay.open{display:flex}
-  .modal{background:#fff;border-radius:20px 20px 0 0;border-top:3px solid var(--navy);width:100%;max-height:93vh;overflow-y:auto;animation:slideUp .28s cubic-bezier(.22,.61,.36,1);position:relative}
-  @keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
-  .modal-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:10px auto 0}
-  .modal-close{position:absolute;top:14px;right:14px;width:32px;height:32px;background:var(--light);border:1px solid var(--border);border-radius:50%;color:var(--muted);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10}
+/* ── FILTRES ── */
+.filters{display:flex;gap:8px;overflow-x:auto;padding:.9rem 1rem .2rem;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filter-btn{flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;transition:all .15s}
+.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
 
-  /* GALERIE */
-  .modal-gallery{margin-top:10px;overflow-x:auto;display:flex;gap:8px;padding:0 1rem .5rem;scrollbar-width:none}
-  .modal-gallery::-webkit-scrollbar{display:none}
-  .gallery-thumb{flex-shrink:0;width:calc(100vw - 2rem);max-width:360px;aspect-ratio:1;background:var(--light);border-radius:10px;overflow:hidden;border:1px solid var(--border)}
-  .gallery-thumb img{width:100%;height:100%;object-fit:cover}
+/* ── SECTION TITLE ── */
+.section-header{padding:1rem 1.2rem .6rem;display:flex;align-items:center;gap:10px}
+.section-header h2{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);white-space:nowrap}
+.section-header::after{content:'';flex:1;height:1px;background:var(--border)}
 
-  /* MODAL BODY */
-  .modal-body{padding:1rem 1.1rem 2.5rem}
-  .modal-brand{font-size:10px;color:var(--navy);text-transform:uppercase;letter-spacing:.14em;font-weight:700;margin-bottom:3px}
-  .modal-title{font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:900;line-height:1.15;color:var(--text);margin-bottom:.6rem;text-transform:uppercase}
-  .modal-price{font-family:'Montserrat',sans-serif;font-size:1.55rem;font-weight:900;color:var(--navy);margin-bottom:.8rem}
-  .tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.85rem}
-  .tag{background:var(--light);border:1px solid var(--border);border-radius:20px;font-size:11px;color:var(--muted);padding:3px 10px;font-weight:600}
-  .modal-desc{font-size:.88rem;color:#4a5a6a;line-height:1.7;margin-bottom:1.1rem}
+/* ── GRID ── */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 1rem 1.5rem}
+.product-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .16s,box-shadow .16s;position:relative}
+.product-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,58,92,.1)}
+.product-card:active{transform:scale(.97)}
+.product-card.hidden{display:none}
+.card-img-wrap{width:100%;aspect-ratio:1;background:var(--light);overflow:hidden}
+.card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.product-card:hover .card-img-wrap img{transform:scale(1.05)}
+.promo-pill{position:absolute;top:8px;left:8px;background:var(--accent);color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:20px}
+.card-body{padding:.7rem .75rem .85rem}
+.card-brand{font-size:10px;color:var(--navy);text-transform:uppercase;letter-spacing:.12em;font-weight:600;margin-bottom:3px}
+.card-name{font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;line-height:1.25;color:var(--text);margin-bottom:6px}
+.card-price{font-family:'Montserrat',sans-serif;font-size:.96rem;font-weight:800;color:var(--navy)}
 
-  /* CODE PROMO */
-  .promo-block{background:#eef4fb;border:1.5px dashed var(--navy);border-radius:10px;padding:.85rem 1rem;margin-bottom:1.1rem;display:flex;align-items:center;justify-content:space-between;gap:10px}
-  .promo-label{font-size:10px;color:var(--navy-l);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:3px}
-  .promo-code{font-family:'Montserrat',sans-serif;font-size:1.35rem;font-weight:900;color:var(--navy);letter-spacing:.05em}
-  .copy-btn{background:var(--navy);border:none;border-radius:8px;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;padding:8px 14px;cursor:pointer;transition:background .15s;white-space:nowrap;flex-shrink:0}
-  .copy-btn:active{background:var(--navy-l)}
+/* ── BANDEAU PARTENAIRES ── */
+.partners-section{padding:0 0 1.5rem}
+.partners-strip{display:flex;overflow-x:auto;gap:16px;padding:.5rem 1rem 1rem;scrollbar-width:none;align-items:center}
+.partners-strip::-webkit-scrollbar{display:none}
+.partner-logo{flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 16px;height:56px;min-width:100px;text-decoration:none;transition:box-shadow .15s,transform .15s}
+.partner-logo:hover{box-shadow:0 4px 14px rgba(26,58,92,.1);transform:translateY(-1px)}
+.partner-logo img{max-height:32px;max-width:90px;object-fit:contain;filter:grayscale(30%)}
+.partner-logo span{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:var(--navy);letter-spacing:.06em;text-align:center;line-height:1.2}
 
-  /* BUY BTN */
-  .buy-btn{display:block;width:100%;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;text-align:center;text-decoration:none;padding:.95rem;border-radius:10px;border:none;cursor:pointer;transition:background .15s}
-  .buy-btn:hover{background:var(--red-h)}
-  .modal-note{text-align:center;font-size:11px;color:var(--muted);margin-top:.6rem}
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,20,35,.72);z-index:100;align-items:flex-end}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:20px 20px 0 0;border-top:3px solid var(--navy);width:100%;max-height:93vh;overflow-y:auto;animation:slideUp .28s cubic-bezier(.22,.61,.36,1);position:relative}
+@keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:10px auto 0}
+.modal-close{position:absolute;top:14px;right:14px;width:32px;height:32px;background:var(--light);border:1px solid var(--border);border-radius:50%;color:var(--muted);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10}
 
-  /* FOOTER */
-  footer{padding:1.4rem 1.2rem;text-align:center;border-top:1px solid var(--border);font-size:11px;color:var(--muted);letter-spacing:.04em;background:#fff}
-  footer a{color:var(--navy);text-decoration:none;font-weight:600}
+/* GALERIE */
+.modal-gallery{margin-top:10px;overflow-x:auto;display:flex;gap:8px;padding:0 1rem .5rem;scrollbar-width:none}
+.modal-gallery::-webkit-scrollbar{display:none}
+.gallery-thumb{flex-shrink:0;width:calc(100vw - 2rem);max-width:360px;aspect-ratio:1;background:var(--light);border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover}
 
-  body.locked{overflow:hidden}
+/* MODAL BODY */
+.modal-body{padding:1rem 1.1rem 2.5rem}
+.modal-brand{font-size:10px;color:var(--navy);text-transform:uppercase;letter-spacing:.14em;font-weight:700;margin-bottom:3px}
+.modal-title{font-family:'Montserrat',sans-serif;font-size:1.25rem;font-weight:900;line-height:1.15;color:var(--text);margin-bottom:.6rem;text-transform:uppercase}
+.modal-price{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:900;color:var(--navy);margin-bottom:.8rem}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.85rem}
+.tag{background:var(--light);border:1px solid var(--border);border-radius:20px;font-size:11px;color:var(--muted);padding:3px 10px;font-weight:600}
+.modal-desc{font-size:.88rem;color:#4a5a6a;line-height:1.7;margin-bottom:1.1rem}
+
+/* CODE PROMO */
+.promo-block{background:#f0f4f8;border:1.5px dashed var(--navy);border-radius:10px;padding:.85rem 1rem;margin-bottom:1.1rem;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.promo-label{font-size:10px;color:var(--navy-l);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:3px}
+.promo-code{font-family:'Montserrat',sans-serif;font-size:1.35rem;font-weight:900;color:var(--navy);letter-spacing:.05em}
+.copy-btn{background:var(--navy);border:none;border-radius:8px;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;padding:8px 14px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+
+/* BUY BTN */
+.buy-btn{display:block;width:100%;background:var(--accent);color:#fff;font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;text-align:center;text-decoration:none;padding:.95rem;border-radius:10px;border:none;cursor:pointer;transition:background .15s}
+.buy-btn:hover{background:var(--accent-h)}
+.modal-note{text-align:center;font-size:11px;color:var(--muted);margin-top:.6rem}
+
+/* FOOTER */
+footer{padding:1.4rem 1.2rem;text-align:center;border-top:1px solid var(--border);font-size:11px;color:var(--muted);letter-spacing:.04em;background:#fff}
+footer a{color:var(--navy);text-decoration:none;font-weight:600}
+body.locked{overflow:hidden}
 </style>
 </head>
 <body>
 
 <header>
   <div class="header-stripe"></div>
-
   <div class="avatar-wrap">
     <img class="avatar"
       src="https://graph.facebook.com/Duc.Matteo/picture?type=large&redirect=true"
@@ -110,10 +130,13 @@
       alt="Mattéo Duc">
     <div class="avatar-badge">🚶 Marche Athlétique</div>
   </div>
-
-  <h1>Mattéo Duc</h1>
+  <div class="name-row">
+    <h1>Mattéo Duc</h1>
+    <span class="verified" title="Athlète certifié">
+      <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+    </span>
+  </div>
   <div class="header-sub">Athlète de haut niveau · Équipe de France</div>
-
   <div class="socials">
     <a class="social-btn" href="https://www.matteoduc.fr" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
@@ -134,11 +157,59 @@
   </div>
 </header>
 
+<!-- FILTRES -->
+<div class="filters" id="filters">
+  <button class="filter-btn active" data-cat="all">Tout</button>
+  <button class="filter-btn" data-cat="nutrition">Nutrition</button>
+  <button class="filter-btn" data-cat="chaussures">Chaussures</button>
+  <button class="filter-btn" data-cat="recuperation">Récupération</button>
+  <button class="filter-btn" data-cat="hydratation">Hydratation</button>
+</div>
+
 <div class="section-header">
-  <h2>Mes produits sélectionnés</h2>
+  <h2>Mes sélections</h2>
 </div>
 
 <div class="grid" id="grid"></div>
+
+<!-- BANDEAU PARTENAIRES -->
+<div class="section-header" style="padding-top:.5rem">
+  <h2>Mes partenaires</h2>
+</div>
+<div class="partners-section">
+  <div class="partners-strip">
+    <a class="partner-logo" href="https://authentic-nutrition.com" target="_blank" rel="noopener">
+      <img src="https://authentic-nutrition.com/cdn/shop/files/affe991dd6e87bf266c6d9d1c07d4df4df96557b.png?v=1768552143&width=300"
+        alt="Authentic Nutrition"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      ><span style="display:none">Authentic Nutrition</span>
+    </a>
+    <a class="partner-logo" href="https://herkover.fr" target="_blank" rel="noopener">
+      <img src="https://herkover.fr/cdn/shop/files/HERKOVER_daf4b7e9-8707-4373-98df-27a6d442f28e.svg?v=1748250921&width=300"
+        alt="Herkover"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      ><span style="display:none">Herkover</span>
+    </a>
+    <a class="partner-logo" href="https://www.i-run.fr" target="_blank" rel="noopener">
+      <img src="https://static.i-run.fr/668/mobile/img/design/logo-simple.svg"
+        alt="i-Run"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      ><span style="display:none">i-Run</span>
+    </a>
+    <a class="partner-logo" href="https://bonnevalwaters.com" target="_blank" rel="noopener">
+      <img src="https://bonnevalwaters.com/wp-content/uploads/2025/03/bonneval-waters-favicon.png"
+        alt="Bonneval Waters"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      ><span style="display:none">Bonneval Waters</span>
+    </a>
+    <a class="partner-logo" href="https://www.asics.com/fr/fr-fr/" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Asics_Logo.svg/320px-Asics_Logo.svg.png"
+        alt="ASICS"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      ><span style="display:none">ASICS</span>
+    </a>
+  </div>
+</div>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
@@ -171,25 +242,108 @@
 
 <script>
 const products = [
+  /* ── AUTHENTIC NUTRITION ── */
   {
+    cat:"nutrition",
     brand:"Authentic Nutrition",
-    name:"Booster + Boisson Énergétique Isotonique",
+    name:"Booster+ Boisson Énergétique Isotonique",
     short:"Booster+ Isotonique",
     price:"À partir de 3,99€",
     discount:"-20%",
     imgs:[
       "https://authentic-nutrition.com/cdn/shop/files/citron-500webp.webp?v=1776156130",
       "https://authentic-nutrition.com/cdn/shop/files/peche-500webp.webp?v=1776156130",
-      "https://authentic-nutrition.com/cdn/shop/files/rouge-500webp.webp?v=1776156130",
-      "https://authentic-nutrition.com/cdn/shop/files/peche1500webp.webp?v=1772785888"
+      "https://authentic-nutrition.com/cdn/shop/files/rouge-500webp.webp?v=1776156130"
     ],
-    desc:"La boisson que j'utilise à l'entraînement et en compétition. Isotonique, fabriquée en France, elle apporte les glucides et électrolytes nécessaires pour maintenir l'effort sur la durée. Disponible en plusieurs saveurs et plusieurs formats.",
+    desc:"Ma boisson de référence à l'entraînement et en compétition. Isotonique, fabriquée en France, elle apporte glucides et électrolytes pour maintenir l'effort. Plusieurs saveurs disponibles.",
     code:"MATTEO20",
-    tags:["Nutrition","Énergie","Hydratation","Made in France"],
+    tags:["Énergie","Isotonique","Effort","Made in France"],
     link:"https://authentic-nutrition.com/products/boisson-energetique-booster",
-    note:"Code -20% valable sur toute la boutique Authentic Nutrition"
+    note:"Code -20% sur toute la boutique Authentic Nutrition"
   },
   {
+    cat:"nutrition",
+    brand:"Authentic Nutrition",
+    name:"Crème Énergétique Carbo Start",
+    short:"Crème Carbo Start",
+    price:"13,95€",
+    discount:"-20%",
+    imgs:[
+      "https://authentic-nutrition.com/cdn/shop/files/carbostart_webp.webp?v=1772786774"
+    ],
+    desc:"Apport rapide en glucides juste avant l'effort. Ultra-digeste, riche en maltodextrine, elle se prend sans eau, parfaite à glisser dans la poche avant le départ.",
+    code:"MATTEO20",
+    tags:["Avant-effort","Glucides","Pratique"],
+    link:"https://authentic-nutrition.com/products/creme-energetique-carbo-start",
+    note:"Code -20% sur toute la boutique Authentic Nutrition"
+  },
+  {
+    cat:"nutrition",
+    brand:"Authentic Nutrition",
+    name:"Carbo Powder",
+    short:"Carbo Powder",
+    price:"À partir de 9,90€",
+    discount:"-20%",
+    imgs:[
+      "https://authentic-nutrition.com/cdn/shop/files/carbostart_webp.webp?v=1772786774"
+    ],
+    desc:"Glucides de qualité en poudre pour charger les réserves avant une longue épreuve ou récupérer après. Simple, efficace, sans additifs inutiles.",
+    code:"MATTEO20",
+    tags:["Glucides","Charge","Récupération"],
+    link:"https://authentic-nutrition.com/products/carbo-powder",
+    note:"Code -20% sur toute la boutique Authentic Nutrition"
+  },
+  {
+    cat:"nutrition",
+    brand:"Authentic Nutrition",
+    name:"Boost Gel Énergétique",
+    short:"Boost Gel Unidose",
+    price:"À partir de 1,99€",
+    discount:"-20%",
+    imgs:[
+      "https://authentic-nutrition.com/cdn/shop/files/citron-500webp.webp?v=1776156130"
+    ],
+    desc:"Le gel compact pour un coup de boost rapide pendant l'effort. Facile à transporter, digestion optimale, idéal en compétition ou lors de longues séances.",
+    code:"MATTEO20",
+    tags:["Gel","Pendant l'effort","Compact"],
+    link:"https://authentic-nutrition.com/products/gel-energetique-unidose-boost-gel",
+    note:"Code -20% sur toute la boutique Authentic Nutrition"
+  },
+  {
+    cat:"nutrition",
+    brand:"Authentic Nutrition",
+    name:"Authentic Récup — Boisson Protéinée",
+    short:"Authentic Récup Chocolat",
+    price:"28,99€",
+    discount:"-20%",
+    imgs:[
+      "https://authentic-nutrition.com/cdn/shop/files/recup_webp.webp?v=1772786774"
+    ],
+    desc:"Ma boisson de récupération post-effort. Riche en protéines, BCAA, vitamines et électrolytes. Antioxydante, fabriquée en France, arôme chocolat.",
+    code:"MATTEO20",
+    tags:["Récupération","Protéines","BCAA","Post-effort"],
+    link:"https://authentic-nutrition.com/products/authentic-recup",
+    note:"Code -20% sur toute la boutique Authentic Nutrition"
+  },
+  {
+    cat:"nutrition",
+    brand:"Authentic Nutrition",
+    name:"Booster 500 Anti-Gaspi",
+    short:"Booster 500 (Anti-Gaspi)",
+    price:"10,75€",
+    discount:"-20%",
+    imgs:[
+      "https://authentic-nutrition.com/cdn/shop/files/citron-500webp.webp?v=1776156130"
+    ],
+    desc:"Le Booster+ en format 500g à prix réduit — date courte, qualité identique. Le meilleur rapport qualité-prix pour s'approvisionner avant une période de compétition.",
+    code:"MATTEO20",
+    tags:["Bon plan","Anti-gaspi","Format 500g"],
+    link:"https://authentic-nutrition.com/products/ddm-06-26-boisson-energetique-isotonique-booster-500",
+    note:"Code -20% sur toute la boutique Authentic Nutrition"
+  },
+  /* ── HERKOVER ── */
+  {
+    cat:"recuperation",
     brand:"Herkover",
     name:"PressoPro 8.0+",
     short:"PressoPro 8.0 Pressothérapie",
@@ -198,34 +352,120 @@ const products = [
     imgs:[
       "https://herkover.fr/cdn/shop/files/12.svg?crop=center&height=1200&v=1770280233&width=1200"
     ],
-    desc:"Mon outil de récupération indispensable après chaque entraînement intensif. La pressothérapie accélère la récupération musculaire, soulage les jambes lourdes et favorise la circulation. un outils pratique et idéal en phase de compétition intensive.",
+    desc:"Mon outil de récupération indispensable. Pressothérapie 8 chambres pour accélérer la récupération musculaire, soulager les jambes lourdes et favoriser le drainage lymphatique.",
     code:null,
-    tags:["Récupération","Pressothérapie","Circulation","Jambes lourdes"],
+    tags:["Pressothérapie","Récupération","Jambes","Pro"],
     link:"https://herkover.fr/collections/pressotherapie/products/pressopro-8-0",
     note:"Livraison gratuite en France dès 150€"
   },
+  /* ── ASICS × i-RUN ── */
   {
+    cat:"chaussures",
     brand:"ASICS × i-Run",
     name:"Asics Metaspeed Edge Tokyo",
-    short:"Asics Metaspeed Edge Tokyo",
+    short:"Metaspeed Edge Tokyo",
     price:"270€",
     discount:null,
     imgs:[
       "https://photo.i-run.com/asics-metaspeed-edge-tokyo-chaussures-homme-839938-1-sz.jpg"
     ],
-    desc:"C'est le modèle que j'utilise en compétition de 5km à semi-marathon. Conçue pour la performance, elle offre un retour d'énergie exceptionnel grâce à sa plaque carbone. Disponible chez i-Run.",
+    desc:"Ma chaussure de compétition. Plaque carbone, retour d'énergie exceptionnel, conçue pour les athlètes à cadence élevée. Note 4.9/5 sur 23 avis.",
     code:null,
-    tags:["Compétition","Carbone","ASICS","Route"],
+    tags:["Compétition","Carbone","Route","Vitesse"],
     link:"https://www.i-run.fr/chaussures_homme/Running_c23/Asics_m1/Asics-Metaspeed-Edge-Tokyo_Asics_fiche_144930.html?v=03",
-    note:"Note 4.9/5 · 23 avis · Paiement 3x sans frais"
+    note:"3x sans frais · Expédition 24h · Retour 30 jours"
+  },
+  {
+    cat:"chaussures",
+    brand:"ASICS × i-Run",
+    name:"Asics Sonicblast",
+    short:"Asics Sonicblast",
+    price:"À voir sur i-Run",
+    discount:null,
+    imgs:[
+      "https://photo.i-run.com/asics-sonicblast-chaussures-homme-810069-1-sz.jpg"
+    ],
+    desc:"Dynamisme et stabilité pour les sessions rapides et régulières. Une chaussure polyvalente qui convient aussi bien à l'entraînement qu'aux compétitions courte distance.",
+    code:null,
+    tags:["Entraînement","Dynamique","Stabilité"],
+    link:"https://www.i-run.fr/chaussures_homme/Running_c23/Asics_m1/Asics-Sonicblast_Asics_fiche_145268.html?v=02",
+    note:"Expédition 24h · 5% de cashback · Retour 30 jours"
+  },
+  {
+    cat:"chaussures",
+    brand:"ASICS × i-Run",
+    name:"Asics Magic Speed 5",
+    short:"Asics Magic Speed 5",
+    price:"À voir sur i-Run",
+    discount:null,
+    imgs:[
+      "https://photo.i-run.com/asics-magic-speed-5-chaussures-homme-844888-1-sz.jpg"
+    ],
+    desc:"Alliée idéale pour les courses courte distance et les entraînements axés sur la rapidité. Légère, réactive et précise.",
+    code:null,
+    tags:["Vitesse","Légèreté","Courte distance"],
+    link:"https://www.i-run.fr/chaussures_homme/Running_c23/Asics_m1/Asics-Magic-Speed-5_Asics_fiche_146543.html",
+    note:"Expédition 24h · 5% de cashback · Retour 30 jours"
+  },
+  {
+    cat:"chaussures",
+    brand:"ASICS × i-Run",
+    name:"Asics Superblast 3",
+    short:"Asics Superblast 3",
+    price:"À voir sur i-Run",
+    discount:null,
+    imgs:[
+      "https://photo.i-run.com/asics-superblast-3-chaussures-homme-844869-1-sz.jpg"
+    ],
+    desc:"Pour avaler les longues distances avec aisance. Amorti maximal, confort sur la durée, sans compromis sur le dynamisme.",
+    code:null,
+    tags:["Longue distance","Amorti","Confort"],
+    link:"https://www.i-run.fr/chaussures_homme/Running_c23/Asics_m1/Asics-Superblast-3_Asics_fiche_146403.html?v=01",
+    note:"Expédition 24h · 5% de cashback · Retour 30 jours"
+  },
+  /* ── BONNEVAL WATERS ── */
+  {
+    cat:"hydratation",
+    brand:"Bonneval Waters",
+    name:"Eau Minérale Plate des Alpes",
+    short:"Eau Plate Bonneval",
+    price:"Sur le site",
+    discount:null,
+    imgs:[
+      "https://bonnevalwaters.com/wp-content/uploads/2025/02/bonneval-waters-montagne-produit-eau-plate-img-mise-en-avant.webp"
+    ],
+    desc:"Eau minérale naturelle filtrée 2 000 ans sous les Alpes de Savoie. Naturellement riche en calcium, embouteillée en PET recyclé. Pureté et minéralité d'exception.",
+    code:null,
+    tags:["Hydratation","Minérale","Alpes","Plate"],
+    link:"https://bonnevalwaters.com/en/products/still-water/",
+    note:"Eau naturelle des Alpes · Tarentaise, Savoie"
+  },
+  {
+    cat:"hydratation",
+    brand:"Bonneval Waters",
+    name:"Eau Minérale Gazeuse des Alpes",
+    short:"Eau Gazeuse Bonneval",
+    price:"Sur le site",
+    discount:null,
+    imgs:[
+      "https://bonnevalwaters.com/wp-content/uploads/2025/02/bonneval-waters-montagne-produit-eau-plate-img-mise-en-avant.webp"
+    ],
+    desc:"La version pétillante de l'eau Bonneval, pour varier les plaisirs après l'effort. Même minéralité exceptionnelle des Alpes, en version gazeuse.",
+    code:null,
+    tags:["Hydratation","Gazeuse","Alpes","Post-effort"],
+    link:"https://bonnevalwaters.com/en/products/sparkling-water/",
+    note:"Eau naturelle des Alpes · Tarentaise, Savoie"
   }
 ];
 
 let currentCode='';
+let currentFilter='all';
 
 function render(){
-  document.getElementById('grid').innerHTML=products.map((p,i)=>`
-    <div class="product-card" onclick="openModal(${i})">
+  document.getElementById('grid').innerHTML=products.map((p,i)=>{
+    const hidden=(currentFilter!=='all'&&p.cat!==currentFilter)?'hidden':'';
+    return `
+    <div class="product-card ${hidden}" onclick="openModal(${i})">
       ${p.discount?`<div class="promo-pill">${p.discount}</div>`:''}
       <div class="card-img-wrap">
         <img src="${p.imgs[0]}" alt="${p.name}" loading="lazy">
@@ -235,8 +475,18 @@ function render(){
         <div class="card-name">${p.short}</div>
         <div class="card-price">${p.price}</div>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
+
+document.getElementById('filters').addEventListener('click',e=>{
+  const btn=e.target.closest('.filter-btn');
+  if(!btn)return;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter=btn.dataset.cat;
+  render();
+});
 
 function openModal(i){
   const p=products[i];
